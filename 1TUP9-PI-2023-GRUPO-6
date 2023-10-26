@@ -1,0 +1,32 @@
+algoritmo TrabajoPractico
+	definir opcion, ruta, DNI, tel Como Entero
+	Definir nombre como cadena
+	Definir equipaje Como Logico
+	
+	
+	Repetir
+		Escribir "Venta pasaje "
+		Escribir "Buscar pasaje vendido "
+		Escribir "Buscar pasajero "
+		Escribir "Ordenar y mostrar lista de pasajeros "
+		Escribir "Listado"
+		Escribir "Seleccione una opcion "
+		Segun opcion
+			1:SubProceso(venta_pasaje)
+			
+
+		FinSegun
+		
+		
+	Mientras Que (opcion <> 5)
+	
+FinAlgoritmo
+
+SubProceso(venta_pasaje por referencia)
+	Escribir "1. Buenos Aires - Bariloche "
+	Escribir "2. Buenos Aires - Salta "
+	Escribir "3. Rosario - Buenos Aires "
+	Escribir "4. Mar del Plata - Mendoza "
+	Escribir "Seleccione una ruta: "
+	
+FinSubProceso
