@@ -1,28 +1,21 @@
-algoritmo TrabajoPractico
-	definir opcion, ruta, DNI, tel Como Entero
-	Definir nombre como cadena
-	Definir equipaje Como Logico
-	
-	
-	Repetir
-		Escribir "Venta pasaje "
-		Escribir "Buscar pasaje vendido "
-		Escribir "Buscar pasajero "
-		Escribir "Ordenar y mostrar lista de pasajeros "
-		Escribir "Listado"
-		Escribir "Seleccione una opcion "
-		Segun opcion
-			1:SubProceso(venta_pasaje)
-			
-
-		FinSegun
+Algoritmo sin_titulo
+		definir opcion, ruta, DNI, tel Como Entero
+		Definir nombre como cadena
+		Definir equipaje Como Logico
+		Dimension venta_pasaje[i]
 		
+		Repetir
+			Escribir "Venta pasaje "
+			Escribir "Buscar pasaje vendido "
+			Escribir "Buscar pasajero "
+			Escribir "Ordenar y mostrar lista de pasajeros "
+			Escribir "Listado"
+			Escribir "Seleccione una opcion "
+		Mientras Que (opcion <> 5)
 		
-	Mientras Que (opcion <> 5)
-	
 FinAlgoritmo
 
-SubProceso(venta_pasaje por referencia)
+SubProceso venta_pasaje[i](por referencia)
 	Escribir "1. Buenos Aires - Bariloche "
 	Escribir "2. Buenos Aires - Salta "
 	Escribir "3. Rosario - Buenos Aires "
@@ -30,3 +23,24 @@ SubProceso(venta_pasaje por referencia)
 	Escribir "Seleccione una ruta: "
 	
 FinSubProceso
+
+Funcion Pasaj <- Pasajeros(lista)
+	Definir NumPasaj, arrayPasaj, Salir Como Entero
+	
+	Para i<-0 Hasta 5
+		Repetir
+			
+			NumPasaj = 1
+			Dimension arrayPasaj[NumPasaj]
+			Dimension Ruta[NumPasaj]
+			Dimension Telefono[NumPasaj]
+			Dimension Dni[NumPasaj]
+			Dimension Ruta[NumPasaj]
+			Dimension IDPasajero[NumPasaj]
+			Dimension Asiento[NumPasaj]
+			Dimension CostoPasaj[NumPasaj]
+			
+		
+		Mientras Que (Salir = 0)
+	FinPara
+FinFuncion
