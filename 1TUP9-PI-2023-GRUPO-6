@@ -6,9 +6,9 @@ Algoritmo sin_titulo
 	Dimension venta_pasaje[i]
 		
 		Repetir
-			Escribir "1. Venta pasaje "
-			Escribir "2. Buscar pasaje vendido "
-			Escribir "3. Buscar pasajero "
+			Escribir "1. Venta pasaje"
+			Escribir "2. Buscar pasaje vendido"
+			Escribir "3. Buscar pasajero"
 			Escribir "4. Ordenar y mostrar lista de pasajeros "
 			Escribir "5. Listado"
 			Escribir "Seleccione una opcion "
