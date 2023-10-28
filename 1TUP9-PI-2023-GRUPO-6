@@ -2,7 +2,13 @@ proceso sin_titulo
 	definir opc, ruta, DNI, tel, rutaOrd Como Entero
 	Definir nombre como cadena
 	Definir equipaje Como Logico
+	definir precios Como Real
 	definir opc2 Como caracter
+	Definir cantBB, cantBS, cantRB, cantMM Como Entero
+	cantBB = 120
+	cantBS = 120
+	cantRB = 80
+	cantMM = 80
 	Definir bsasbarilo3 Como caracter// no se si es correcto esto
 	definir opcion1, opcion2, opcion3, opcion4 Como caracter
 	Dimension bsasbarilo3[5,120]
@@ -70,16 +76,17 @@ subproceso seleccionVuelo(ruta)// venta de pasaje seccion usada para seleccionar
 		Escribir "Seleccione una ruta: "
 		leer ruta
 		Segun ruta hacer
-			1:bsasBarilo = bsasBarilo - 1
-			2:bsasSalta = bsasSalta - 1
-			3:rosBsas = rosBsas - 1
-			4:mardelMendoza = mardelMendoza - 1 
+			1:bsasBarilo(opcion1)
+			2:bsasSalta(opcion2
+			3:rosBsas(opcion3)
+			4:mardelMendoza(opcion4) 
 		FinSegun
 	mientras Que ruta <> 5
 	
 FinSubProceso
 SubProceso bsasBarilo(opcion1)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Para i = 0 hasta 120
+	
+	Si cantBB <> 0 // este para no es la solucion, hacerlo mejor con un si.
 		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
 		leer bsasBarilo3[1,i]
 		Escribir "Escriba su DNI:"
@@ -87,46 +94,64 @@ SubProceso bsasBarilo(opcion1)// por cada ruta seleccionada, hacemos un arreglo 
 		Escribir "Escriba su telefono:"
 		leer bsasBarilo3[3,i]
 		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[1,i]
-	FinPara
+		leer bsasBarilo3[4,i]
+		cantBB = cantBB - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
+	SiNo
+		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
+	FinSi
+	
+	
 FinSubProceso
 
 SubProceso bsasSalta(opcion2)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Para i = 0 hasta 120
+	Si cantBS <> 0
 		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]
+		leer bsasBarilo3[1,i]	// cambiar los nombre de los arreglos dependiendo la ruta selcc.
 		Escribir "Escriba su DNI:"
 		leer bsasBarilo3[2,i]
 		Escribir "Escriba su telefono:"
 		leer bsasBarilo3[3,i]
 		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[1,i]
-	FinPara
+		leer bsasBarilo3[4,i]
+		cantBS = cantBS - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
+	SiNo
+		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
+	FinSi
+	
 
 FinSubProceso
 SubProceso rosBsas(opcion3)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Para i = 0 hasta 120
+	Si cantRB <> 0
 		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]
+		leer bsasBarilo3[1,i] // cambiar los nombre de los arreglos dependiendo la ruta selcc.
 		Escribir "Escriba su DNI:"
 		leer bsasBarilo3[2,i]
 		Escribir "Escriba su telefono:"
 		leer bsasBarilo3[3,i]
 		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[1,i]
-	FinPara
+		leer bsasBarilo3[4,i]
+		cantRB = cantRB - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
+	SiNo
+		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
+	FinSi
+	
 FinSubProceso
 SubProceso mardelMendoza(opcion4)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Para i = 0 hasta 120
+	si cantMM <> 0
 		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]
+		leer bsasBarilo3[1,i]	// cambiar los nombre de los arreglos dependiendo la ruta selcc.
 		Escribir "Escriba su DNI:"
 		leer bsasBarilo3[2,i]
 		Escribir "Escriba su telefono:"
 		leer bsasBarilo3[3,i]
 		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[1,i]
-	FinPara
+		leer bsasBarilo3[4,i]
+		cantMM = cantMM - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
+	SiNo
+		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
+	FinSi
+
+	
 FinSubProceso
 SubProceso buscarPasajero(buscarPersona)//buscar a pasajero por nombre 3.
 	
@@ -136,7 +161,32 @@ FinSubProceso
 SubProceso buscarPasajeVendido(pasajevendido)// buscar psaje vendido 2.
 	
 FinSubProceso
-SubProceso precios(nachi)// este sub esta hecho para los calculos de los precios, hay que ver si es necesario hacer unna funcion por cada vuelo o no.
+SubProceso precios(BsAsBarilo)// este sub esta hecho para los calculos de los precios, hay que ver si es necesario hacer unna funcion por cada vuelo o no. me parece mas conveniente usar funciones en estos casos
+	si cantBB <= 20 Entonces
+		
+		si bsasBarilo3[4,i] = "verdadero"
+			bsasBarilo[5,i] = // precio 150.000 + 5% 	
+		sino 
+			bsasBarilo[5,i] = // precio 150.000 
+		FinSi                                                //repetir estas operaciones para cada ruta de vuelo
+	SiNo
+		si cantBB > 20 y cantBB <= 60                         // buscar como hacer para que esto asigne ese precio para cada pasajero 
+			si bsasBarilo3[4,i] = "verdadero"
+				bsasBarilo[5,i] = // precio 150.000 +10% + 5% 	
+			sino 
+				bsasBarilo[5,i] = // precio 150.000 + 10%
+			FinSi
+		SiNo
+			si cantBB > 60 y cantBB <= 120
+				si bsasBarilo3[4,i] = "verdadero"
+					bsasBarilo[5,i] = // precio 180.000 + 5% 	
+				sino 
+					bsasBarilo[5,i] = // precio 180.000 
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	
 	
 FinSubProceso
 
