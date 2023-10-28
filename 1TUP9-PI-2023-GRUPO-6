@@ -1,42 +1,144 @@
 proceso sin_titulo
-	definir opc, ruta, DNI, tel, bsasBarilo Como Entero
+	definir opc, ruta, DNI, tel, rutaOrd Como Entero
 	Definir nombre como cadena
 	Definir equipaje Como Logico
 	definir opc2 Como caracter
-	Dimension venta_pasaje[i]
-		
-		Repetir
-			Escribir "1. Venta pasaje "
-			Escribir "2. Buscar pasaje vendido "
-			Escribir "3. Buscar pasajero "
-			Escribir "4. Ordenar y mostrar lista de pasajeros "
-			Escribir "5. Listado"
-			Escribir "Seleccione una opcion "
-			leer opc
-			Segun opc Hacer
-				1: venta <- pasaje
-				2: Pasaj <- Pasajeros(lista)	
-				3: 
-				4:repetir
+	Definir bsasbarilo3 Como caracter// no se si es correcto esto
+	definir opcion1, opcion2, opcion3, opcion4 Como caracter
+	Dimension bsasbarilo3[5,120]
+	Dimension bsasSalta[5,120]// hay que ver xq tira estos errores
+	Dimension rosBsas[5,80]
+	Dimension mardelMendoza[5,80]
+	ventaPasaje(nombre, ruta, dni, tel)
+	seleccionVuelo(ruta)
+	bsasBarilo(opcion1)//posible solucion al problema de los arreglos.
+	bsasSalta(opcion2)
+	rosBsas(opcion3)
+	mardelMendoza(opcion4)
+	Repetir
+		Escribir "1. Venta pasaje "
+		Escribir "2. Buscar pasaje vendido "
+		Escribir "3. Buscar pasajero "
+		Escribir "4. Ordenar y mostrar lista de pasajeros "// Se pueden ordenar y mostrar la lista de pasajeros por número de asiento ASC/DESC, preguntar
+		//qué ruta se desea ordenar y mostrar. BUSCARLE LA VUELTA.
+		Escribir "5. Listado"
+		Escribir "Seleccione una opcion "
+		leer opc
+		Segun opc Hacer
+			1:ventaPasaje(nombre, ruta, dni, tel)// en estas opciones llamamos a las funciones necesarias.
+			2:buscarPasajeVendido(pasajevendido)
+			3:buscarPasajero(buscarPersona)
+			4:	repetir                    // le preguntamos al usuario en que ruta quiere ordenar a los pasajeros y desp que tipo de orden.
+					Escribir "1. Buenos Aires - Bariloche "
+					Escribir "2. Buenos Aires - Salta "
+					Escribir "3. Rosario - Buenos Aires "
+					Escribir "4. Mar del Plata - Mendoza "
+					mostrar "Seleccione la ruta que desea visualizar ordenada:"
+					leer rutaOrd
+				Mientras Que rutaOrd < 0 y rutaOrd > 5
+				repetir
 					mostrar "A. Por número de asiento Ascendente | B. Por número de asiento Descendente"
 					Mostrar "Ingrese una opcion: "
 					leer opc2
-				Mientras Que (opc2 = "A" o opc2 = "B")
-				
-			FinSegun
-		Mientras Que (opcion <> 5)
-		
-FinAlgoritmo
-
-funcion venta <- pasaje
-	Escribir "1. Buenos Aires - Bariloche "
-	Escribir "2. Buenos Aires - Salta "
-	Escribir "3. Rosario - Buenos Aires "
-	Escribir "4. Mar del Plata - Mendoza "
-	Escribir "Seleccione una ruta: "
-	leer ruta
+				Mientras Que (opc2 = "A" o opc2 = "B")// validamos la opcion ingresada
+			De Otro Modo:
+				mostrar "Opcion incorrecta."
+		FinSegun
+	Mientras Que (opcion <> 5)// validamos la opcion ingresada
+	Mostrar "Muchas gracias por utilizar nuestros servicios :)"
+FinProceso
+SubProceso ventaPasaje(nombre, ruta, dni, tel)// subpro para vender un pasaje. ingreso de datos 1.
+	seleccionVuelo(ruta)
+	Escribir "Escriba su nombre:"
+	leer nombre
+	Escribir "Escriba su DNI:"
+	leer DNI
+	Escribir "Escriba su telefono:"
+	leer tel
+	Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
+	leer equipaje
 	
-FinFuncion
+FinSubProceso
+
+subproceso seleccionVuelo(ruta)// venta de pasaje seccion usada para seleccionar rutas 1.5.
+								//hay que buscar como hacer el contador para saber cuantas plazas disponibles hay.
+	Repetir
+		Escribir "1. Buenos Aires - Bariloche "
+		Escribir "2. Buenos Aires - Salta "
+		Escribir "3. Rosario - Buenos Aires "
+		Escribir "4. Mar del Plata - Mendoza "
+		Escribir "Seleccione una ruta: "
+		leer ruta
+		Segun ruta hacer
+			1:bsasBarilo = bsasBarilo - 1
+			2:bsasSalta = bsasSalta - 1
+			3:rosBsas = rosBsas - 1
+			4:mardelMendoza = mardelMendoza - 1 
+		FinSegun
+	mientras Que ruta <> 5
+	
+FinSubProceso
+SubProceso bsasBarilo(opcion1)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
+	Para i = 0 hasta 120
+		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
+		leer bsasBarilo3[1,i]
+		Escribir "Escriba su DNI:"
+		leer bsasBarilo3[2,i]
+		Escribir "Escriba su telefono:"
+		leer bsasBarilo3[3,i]
+		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
+		leer bsasBarilo3[1,i]
+	FinPara
+FinSubProceso
+
+SubProceso bsasSalta(opcion2)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
+	Para i = 0 hasta 120
+		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
+		leer bsasBarilo3[1,i]
+		Escribir "Escriba su DNI:"
+		leer bsasBarilo3[2,i]
+		Escribir "Escriba su telefono:"
+		leer bsasBarilo3[3,i]
+		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
+		leer bsasBarilo3[1,i]
+	FinPara
+
+FinSubProceso
+SubProceso rosBsas(opcion3)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
+	Para i = 0 hasta 120
+		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
+		leer bsasBarilo3[1,i]
+		Escribir "Escriba su DNI:"
+		leer bsasBarilo3[2,i]
+		Escribir "Escriba su telefono:"
+		leer bsasBarilo3[3,i]
+		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
+		leer bsasBarilo3[1,i]
+	FinPara
+FinSubProceso
+SubProceso mardelMendoza(opcion4)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
+	Para i = 0 hasta 120
+		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
+		leer bsasBarilo3[1,i]
+		Escribir "Escriba su DNI:"
+		leer bsasBarilo3[2,i]
+		Escribir "Escriba su telefono:"
+		leer bsasBarilo3[3,i]
+		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
+		leer bsasBarilo3[1,i]
+	FinPara
+FinSubProceso
+SubProceso buscarPasajero(buscarPersona)//buscar a pasajero por nombre 3.
+	
+FinSubProceso
+
+
+SubProceso buscarPasajeVendido(pasajevendido)// buscar psaje vendido 2.
+	
+FinSubProceso
+SubProceso precios(nachi)// este sub esta hecho para los calculos de los precios, hay que ver si es necesario hacer unna funcion por cada vuelo o no.
+	
+FinSubProceso
 
 
 Funcion Pasaj <- Pasajeros(lista)
