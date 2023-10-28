@@ -1,42 +1,65 @@
-Algoritmo sin_titulo
-	definir opc, ruta, DNI, tel Como Entero
+proceso sin_titulo
+	definir opc, ruta, DNI, tel, bsasBarilo Como Entero
 	Definir nombre como cadena
 	Definir equipaje Como Logico
 	definir opc2 Como caracter
-	Dimension venta_pasaje[i]
-		
-		Repetir
-			Escribir "1. Venta pasaje "
-			Escribir "2. Buscar pasaje vendido "
-			Escribir "3. Buscar pasajero "
-			Escribir "4. Ordenar y mostrar lista de pasajeros "
-			Escribir "5. Listado"
-			Escribir "Seleccione una opcion "
-			leer opc
-			Segun opc Hacer
-				1: venta <- pasaje
-				2: Pasaj <- Pasajeros(lista)	
-				3: 
-				4:repetir
-					mostrar "A. Por número de asiento Ascendente | B. Por número de asiento Descendente"
-					Mostrar "Ingrese una opcion: "
-					leer opc2
-				Mientras Que (opc2 = "A" o opc2 = "B")
-				
-			FinSegun
-		Mientras Que (opcion <> 5)
-		
-FinAlgoritmo
-
-funcion venta <- pasaje
-	Escribir "1. Buenos Aires - Bariloche "
-	Escribir "2. Buenos Aires - Salta "
-	Escribir "3. Rosario - Buenos Aires "
-	Escribir "4. Mar del Plata - Mendoza "
-	Escribir "Seleccione una ruta: "
-	leer ruta
+	bsasBarilo = 120
+	Dimension bsasBarilo[120]
+	Dimension bsasSalta[120]
+	Dimension rosBsas[80]
+	Dimension mardelMendoza[80]
 	
-FinFuncion
+	Repetir
+		Escribir "1. Venta pasaje "
+		Escribir "2. Buscar pasaje vendido "
+		Escribir "3. Buscar pasajero "
+		Escribir "4. Ordenar y mostrar lista de pasajeros "
+		Escribir "5. Listado"
+		Escribir "Seleccione una opcion "
+		leer opc
+		Segun opc Hacer
+			1: venta <- pasaje
+			2: Pasaj <- Pasajeros(lista)	
+			3: 
+			4:repetir
+				mostrar "A. Por número de asiento Ascendente | B. Por número de asiento Descendente"
+				Mostrar "Ingrese una opcion: "
+				leer opc2
+			Mientras Que (opc2 = "A" o opc2 = "B")
+			
+		FinSegun
+	Mientras Que (opcion <> 5)
+
+FinProceso
+SubProceso ventaPasaje(nombre, ruta, dni, tel)
+	seleccionVuelo(ruta)
+	Escribir "Escriba su nombre:"
+	leer nombre
+	Escribir "Escriba su DNI:"
+	leer DNI
+	Escribir "Escriba su telefono:"
+	leer tel
+	Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR
+	leer equipaje
+	
+FinSubProceso
+
+subproceso seleccionVuelo(ruta)
+	Repetir
+		Escribir "1. Buenos Aires - Bariloche "
+		Escribir "2. Buenos Aires - Salta "
+		Escribir "3. Rosario - Buenos Aires "
+		Escribir "4. Mar del Plata - Mendoza "
+		Escribir "Seleccione una ruta: "
+		leer ruta
+		Segun ruta hacer
+			1: bsasBarilo = bsasBarilo - 1
+				
+				
+		FinSegun
+	mientras Que ruta <> 5
+FinSubProceso
+
 
 
 Funcion Pasaj <- Pasajeros(lista)
@@ -45,7 +68,7 @@ Funcion Pasaj <- Pasajeros(lista)
 	Para i<-0 Hasta 5
 		Repetir
 			
-			NumPasaj = 1
+			NumPasaj = i
 			Dimension arrayPasaj[NumPasaj]
 			Dimension Ruta[NumPasaj]
 			Dimension Telefono[NumPasaj]
@@ -55,10 +78,7 @@ Funcion Pasaj <- Pasajeros(lista)
 			Dimension Asiento[NumPasaj]
 			Dimension CostoPasaj[NumPasaj]
 			
-		
+			
 		Mientras Que (Salir = 0)
 	FinPara
-FinFuncion
-Funcion buscarPasajero
-	
 FinFuncion
