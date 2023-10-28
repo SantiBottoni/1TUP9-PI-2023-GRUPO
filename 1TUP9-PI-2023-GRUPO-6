@@ -4,7 +4,7 @@ Algoritmo sin_titulo
 	Definir equipaje Como Logico
 	definir opc2 Como caracter
 	Dimension venta_pasaje[i]
-		
+		putitaa
 		Repetir
 			Escribir "1. Venta pasaje "
 			Escribir "2. Buscar pasaje vendido "
