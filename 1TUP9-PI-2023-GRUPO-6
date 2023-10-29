@@ -1,286 +1,73 @@
-proceso sin_titulo
-	definir opc, ruta, DNI, tel, rutaOrd Como Entero
-	Definir nombre como cadena
-	Definir equipaje Como Logico
-	definir precios Como Real
-	definir opc2 Como caracter
-	Definir cantBB, cantBS, cantRB, cantMM Como Entero
-	cantBB = 120
-	cantBS = 120
-	cantRB = 80
-	cantMM = 80
-	Definir bsasbarilo3 Como caracter// no se si es correcto esto
-	definir opcion1, opcion2, opcion3, opcion4 Como caracter
-	Dimension bsasbarilo3[5,120]
-	Dimension bsasSalta[5,120]// hay que ver xq tira estos errores
-	Dimension rosBsas[5,80]
-	Dimension mardelMendoza[5,80]
-	ventaPasaje(nombre, ruta, dni, tel)
-	seleccionVuelo(ruta)
-	bsasBarilo(opcion1)//posible solucion al problema de los arreglos.
-	bsasSalta(opcion2)
-	rosBsas(opcion3)
-	mardelMendoza(opcion4)
-	Repetir
-		Escribir "1. Venta pasaje "
-		Escribir "2. Buscar pasaje vendido "
-		Escribir "3. Buscar pasajero "
-		Escribir "4. Ordenar y mostrar lista de pasajeros "// Se pueden ordenar y mostrar la lista de pasajeros por número de asiento ASC/DESC, preguntar
-		//qué ruta se desea ordenar y mostrar. BUSCARLE LA VUELTA.
-		Escribir "5. Listado"
-		Escribir "Seleccione una opcion "
-		leer opc
-		Segun opc Hacer
-			1:ventaPasaje(nombre, ruta, dni, tel)// en estas opciones llamamos a las funciones necesarias.
-			2:buscarPasajeVendido(pasajevendido)
-			3:buscarPasajero(buscarPersona)
-			4:	repetir                    // le preguntamos al usuario en que ruta quiere ordenar a los pasajeros y desp que tipo de orden.
-					Escribir "1. Buenos Aires - Bariloche "
-					Escribir "2. Buenos Aires - Salta "
-					Escribir "3. Rosario - Buenos Aires "
-					Escribir "4. Mar del Plata - Mendoza "
-					mostrar "Seleccione la ruta que desea visualizar ordenada:"
-					leer rutaOrd
-				Mientras Que rutaOrd < 0 y rutaOrd > 5
-				repetir
-					mostrar "A. Por número de asiento Ascendente | B. Por número de asiento Descendente"
-					Mostrar "Ingrese una opcion: "
-					leer opc2
-				Mientras Que (opc2 = "A" o opc2 = "B")// validamos la opcion ingresada
-			De Otro Modo:
-				mostrar "Opcion incorrecta."
-		FinSegun
-	Mientras Que (opcion <> 5)// validamos la opcion ingresada
-	Mostrar "Muchas gracias por utilizar nuestros servicios :)"
-FinProceso
-SubProceso ventaPasaje(nombre, ruta, dni, tel)// subpro para vender un pasaje. ingreso de datos 1.
-	seleccionVuelo(ruta)
-	Escribir "Escriba su nombre:"
-	leer nombre
-	Escribir "Escriba su DNI:"
-	leer DNI
-	Escribir "Escriba su telefono:"
-	leer tel
-	Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-	leer equipaje
-	
-FinSubProceso
-
-subproceso seleccionVuelo(ruta)// venta de pasaje seccion usada para seleccionar rutas 1.5.
-								//hay que buscar como hacer el contador para saber cuantas plazas disponibles hay.
-	Repetir
-		Escribir "1. Buenos Aires - Bariloche "
-		Escribir "2. Buenos Aires - Salta "
-		Escribir "3. Rosario - Buenos Aires "
-		Escribir "4. Mar del Plata - Mendoza "
-		Escribir "Seleccione una ruta: "
-		leer ruta
-		Segun ruta hacer
-			1:bsasBarilo(opcion1)
-			2:bsasSalta(opcion2
-			3:rosBsas(opcion3)
-			4:mardelMendoza(opcion4) 
-		FinSegun
-	mientras Que ruta <> 5
-	
-FinSubProceso
-SubProceso bsasBarilo(opcion1)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	
-	Si cantBB <> 0 // este para no es la solucion, hacerlo mejor con un si.
-		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]
-		Escribir "Escriba su DNI:"
-		leer bsasBarilo3[2,i]
-		Escribir "Escriba su telefono:"
-		leer bsasBarilo3[3,i]
-		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[4,i]
-		cantBB = cantBB - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
-	SiNo
-		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
-	FinSi
-	
-	
-FinSubProceso
-
-SubProceso bsasSalta(opcion2)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Si cantBS <> 0
-		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]	// cambiar los nombre de los arreglos dependiendo la ruta selcc.
-		Escribir "Escriba su DNI:"
-		leer bsasBarilo3[2,i]
-		Escribir "Escriba su telefono:"
-		leer bsasBarilo3[3,i]
-		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[4,i]
-		cantBS = cantBS - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
-	SiNo
-		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
-	FinSi
-	
-
-FinSubProceso
-SubProceso rosBsas(opcion3)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	Si cantRB <> 0
-		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i] // cambiar los nombre de los arreglos dependiendo la ruta selcc.
-		Escribir "Escriba su DNI:"
-		leer bsasBarilo3[2,i]
-		Escribir "Escriba su telefono:"
-		leer bsasBarilo3[3,i]
-		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[4,i]
-		cantRB = cantRB - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
-	SiNo
-		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
-	FinSi
-	
-FinSubProceso
-SubProceso mardelMendoza(opcion4)// por cada ruta seleccionada, hacemos un arreglo asi tenemos organizados los pasajeros de cada ruta.
-	si cantMM <> 0
-		Escribir "Escriba su nombre:"   // no se xq no me lee los arreglos en las posiciones que le digo, algo a resolver .
-		leer bsasBarilo3[1,i]	// cambiar los nombre de los arreglos dependiendo la ruta selcc.
-		Escribir "Escriba su DNI:"
-		leer bsasBarilo3[2,i]
-		Escribir "Escriba su telefono:"
-		leer bsasBarilo3[3,i]
-		Escribir "Elija si va a necesitar el quipaje en bodega o no indicando verdadero o falso"//REVISAR.
-		leer bsasBarilo3[4,i]
-		cantMM = cantMM - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
-	SiNo
-		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
-	FinSi
-
-	
-FinSubProceso
-SubProceso buscarPasajero(buscarPersona)//buscar a pasajero por nombre 3.
-	
-FinSubProceso
-
-
-SubProceso buscarPasajeVendido(pasajevendido)// buscar psaje vendido 2.
-	
-FinSubProceso
-SubProceso precios(BsAsBarilo)// este sub esta hecho para los calculos de los precios, hay que ver si es necesario hacer unna funcion por cada vuelo o no. me parece mas conveniente usar funciones en estos casos
-	si cantBB <= 20 Entonces
+Algoritmo sin_titulo
 		
-		si bsasBarilo3[4,i] = "verdadero"
-			bsasBarilo[5,i] = // precio 150.000 + 5% 	
-		sino 
-			bsasBarilo[5,i] = // precio 150.000 
-		FinSi                                                //repetir estas operaciones para cada ruta de vuelo
-	SiNo
-		si cantBB > 20 y cantBB <= 60                         // buscar como hacer para que esto asigne ese precio para cada pasajero 
-			si bsasBarilo3[4,i] = "verdadero"
-				bsasBarilo[5,i] = // precio 150.000 +10% + 5% 	
-			sino 
-				bsasBarilo[5,i] = // precio 150.000 + 10%
-			FinSi
-		SiNo
-			si cantBB > 60 y cantBB <= 120
-				si bsasBarilo3[4,i] = "verdadero"
-					bsasBarilo[5,i] = // precio 180.000 + 5% 	
-				sino 
-					bsasBarilo[5,i] = // precio 180.000 
-				FinSi
-			FinSi
-		FinSi
-	FinSi
-	
-	
-FinSubProceso
-
-
-Funcion Pasaj <- Pasajeros(lista)
-	Definir NumPasaj, arrayPasaj, Salir Como Entero
-	
-	Para i<-0 Hasta 5
+		definir opc, ruta, DNI, tel, rutaOrd Como Entero
+		Definir nombre como cadena
+		Definir equipaje, NumAsi Como Entero
+		definir precios Como Real
+		definir opc2 Como caracter
+		Definir cantBB, cantBS, cantRB, cantMM Como Entero
+		Definir bsasbarilo3 Como Caracter
+		Definir bsasSalta Como Caracter
+		Definir a,b,c,d Como Entero
+		Definir bodega Como Logico
+		
+		Dimension bsasbarilo3[7,120]
+		Dimension MdpMen[7,80]
+		Dimension bsasSalta[7,120]
+		Dimension rosBsas[7,80]
+		
+		
+		a = 1
+		b = 1
+		c = 1
+		d = 1
+		cantBB = 120
+		cantBS = 120
+		cantRB = 80
+		cantMM = 80
+		
 		Repetir
-			
-			NumPasaj = i
-			Dimension arrayPasaj[NumPasaj]
-			Dimension Ruta[NumPasaj]
-			Dimension Telefono[NumPasaj]
-			Dimension Dni[NumPasaj]
-			Dimension Ruta[NumPasaj]
-			Dimension IDPasajero[NumPasaj]
-			Dimension Asiento[NumPasaj]
-			Dimension CostoPasaj[NumPasaj]
-			
-			
-		Mientras Que (Salir = 0)
-	FinPara
-FinFuncionAlgoritmo sin_titulo
-	
-	definir opc, ruta, DNI, tel, rutaOrd Como Entero
-	Definir nombre como cadena
-	Definir equipaje, NumAsi Como Entero
-	definir precios Como Real
-	definir opc2 Como caracter
-	Definir cantBB, cantBS, cantRB, cantMM Como Entero
-	Definir bsasbarilo3 Como Caracter
-	Definir bsasSalta Como Caracter
-	Definir a,b,c,d Como Entero
-	Definir bodega Como Logico
-	
-	Dimension bsasbarilo3[7,120]
-	Dimension MdpMen[7,80]
-	Dimension bsasSalta[7,120]
-	Dimension rosBsas[7,80]
-	
-	
-	a = 1
-	b = 1
-	c = 1
-	d = 1
-	cantBB = 120
-	cantBS = 120
-	cantRB = 80
-	cantMM = 80
-	
-	Repetir
-		Escribir "1. Venta pasaje "
-		Escribir "2. Buscar pasaje vendido "
-		Escribir "3. Buscar pasajero "
-		Escribir "4. Ordenar y mostrar lista de pasajeros "// Se pueden ordenar y mostrar la lista de pasajeros por número de asiento ASC/DESC, preguntar
-		//qué ruta se desea ordenar y mostrar. BUSCARLE LA VUELTA.
-		Escribir "5. Listado"
-		Escribir "Seleccione una opcion"
-		leer opc
-		Segun opc Hacer
-			1:
-				Repetir
-					SeleccionarVuelo
-					leer ruta
-				mientras Que ruta < 1 o ruta > 4
-				Segun ruta Hacer
-					1:	BsAs_Bari= bsasBarilo(bsasbarilo3, cantBB,a, bodega)
-					2: 	BsAs_Salta = bsasSalta2(bsasSalta, cantBS, b, bodega)
-					3: 	Ros_BsAs = RosBsA(rosBsas, cantRB, b, bodega)
-					4: 	MarDelMend = MardelMen(MdpMen, cantRB, b, bodega)
-				FinSegun
-				
-			2:	BuscPa = BuscarPasj(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
-//					Repetir
-//						Mostrar "Ingrese el destino del pasaje a saber"
-//						SeleccionarVuelo
-//						leer ruta
-//					mientras Que ruta < 1 o ruta > 4
-//					
-//					Segun ruta Hacer
-//						1:	BsAs_Bari= bsasBarilo(cantBB,a, bodega)
-//							
-//						2: 	BsAs_Salta = bsasSalta2(cantBS, b, bodega)
-//						3: 	Ros_BsAs = RosBsA(cantRB, b, bodega)
-//						4: 	MarDelMend = MardelMen(cantRB, b, bodega)
-//					FinSegun
-				
-		FinSegun
-	Mientras Que (opcion <> 5)
-	
-	
-	
-	
+			Escribir "1. Venta pasaje "
+			Escribir "2. Buscar pasaje vendido "
+			Escribir "3. Buscar pasajero "
+			Escribir "4. Ordenar y mostrar lista de pasajeros "// Se pueden ordenar y mostrar la lista de pasajeros por número de asiento ASC/DESC, preguntar
+			//qué ruta se desea ordenar y mostrar. BUSCARLE LA VUELTA.
+			Escribir "5. Listado"
+			Escribir "Seleccione una opcion"
+			leer opc
+			Segun opc Hacer
+				1:
+					Repetir
+						SeleccionarVuelo
+						leer ruta
+					mientras Que ruta < 1 o ruta > 4
+					Segun ruta Hacer
+						1:	BsAs_Bari= bsasBarilo(bsasbarilo3, cantBB,a, bodega)
+						2: 	BsAs_Salta = bsasSalta2(bsasSalta, cantBS, b, bodega)
+						3: 	Ros_BsAs = RosBsA(rosBsas, cantRB, b, bodega)
+						4: 	MarDelMend = MardelMen(MdpMen, cantRB, b, bodega)
+					FinSegun
+					
+				2:	BuscPa = BuscarPasj(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)	
+				3:	BuscaPaNom = BuscarPorNombre(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+					
+				4: 	Repetir
+					Mostrar "Ingrese si desea |1- ASCENDENTE| o |2 - DESCENDENTE"
+					Leer AscODes
+						Segun AscODes
+							1:
+								OrdenAscendente = OrdAsc(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+							
+							2:
+								OrdenDescendente = OrdDes(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+						FinSegun
+					Mientras Que AscODes < 1 o AscODes > 2
+			FinSegun
+		Mientras Que (opc <> 5)
+		
+		
+		
+		
 FinAlgoritmo
 
 
@@ -295,64 +82,6 @@ SubProceso SeleccionarVuelo
 	
 FinSubProceso
 
-Funcion ordAsientosASC <- bsasBarilo2(bsasbarilo3 Por Referencia)    //probar si funciona.
-    Definir k, l, temp Como Entero
-    Definir n Como Logico
-    n <- Verdadero
-    
-    Mientras (n)
-        n <- Falso
-        Para k <- 1 Hasta 120 - 1
-            Para l <- 1 Hasta 120 - 1
-                Si bsasbarilo3[l][6] > bsasbarilo3[l + 1][6] Entonces
-                    // Intercambia los elementos si están en el orden incorrecto
-                    temp <- bsasbarilo3[l][6]
-                    bsasbarilo3[l][6] <- bsasbarilo3[l + 1][6]
-                    bsasbarilo3[l + 1][6] <- temp
-                    n <- Verdadero
-                FinSi
-            FinPara
-        FinPara
-    FinMientras
-	
-    // Muestra el arreglo ordenado
-    Para k <- 1 Hasta 120
-        Escribir "Elemento ", k, ": ", bsasbarilo3[k][6]
-    FinPara
-
-FinFuncion
-
-Funcion ordAsientosDESC <- bsasBarilo1(bsasbarilo3 Por Referencia)    //probar si funciona.
-    Definir k, l, temp Como Entero
-    Definir n Como Logico
-    n <- Verdadero
-    
-    Mientras (n)
-        n <- Falso
-        Para k <- 1 Hasta 120 - 1
-            Para l <- 1 Hasta 120 - 1
-                Si bsasbarilo3[l][6] < bsasbarilo3[l + 1][6] Entonces
-                    // Intercambia los elementos si están en el orden incorrecto
-                    temp <- bsasbarilo3[l][6]
-                    bsasbarilo3[l][6] <- bsasbarilo3[l + 1][6]
-                    bsasbarilo3[l + 1][6] <- temp
-                    n <- Verdadero
-                FinSi
-            FinPara
-        FinPara
-    FinMientras
-	
-    // Muestra el arreglo ordenado
-    Para k <- 1 Hasta 120
-        Escribir "Elemento ", k, ": ", bsasbarilo3[k][6]
-    FinPara
-
-FinFuncion
-
-
-
-
-
 Funcion vuelo<- bsasBarilo(bsasbarilo3 Por Referencia,cantBB Por Referencia, a Por Referencia, bodega Por Referencia)
 	
 	Escribir "1. Buenos Aires - Bariloche "
@@ -366,30 +95,32 @@ Funcion vuelo<- bsasBarilo(bsasbarilo3 Por Referencia,cantBB Por Referencia, a P
 		Escribir "Escriba su telefono:"
 		leer bsasBarilo3[a,3]
 		Repetir
-			Escribir "Elija si va a necesitar el quipaje en bodega o no indicando | 1- verdadero o | 0- falso| "//REVISAR.
+			Escribir "Elija si va a necesitar el quipaje en bodega o no indicando | 1- verdadero o | 0- falso| "
 			leer equipaje
 		Mientras Que equipaje < 0 y equipaje > 1
 		
 		Si equipaje = 0 Entonces
 			bodega = Falso
+			bsasBarilo3[a,4] = "Falso"
 		SiNo
 			Si equipaje = 1 Entonces
 				bodega = Verdadero
+				bsasBarilo3[a,4] = "Verdadero"
 			FinSi
 		FinSi
 		Escribir "Ingrese su numero de pasajero frecuente: "
-		leer bsasBarilo3[5,a]
+		leer bsasBarilo3[a,5]
 		
 		cantBB = cantBB - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
 		
 		Definir NumAsi Como Entero
 		NumAsi = 120 - cantBB
-		bsasbarilo3[a, 6] = ConvertirATexto(NumAsi) // what?? Jere explicanos xfis.
+		bsasbarilo3[a, 6] = ConvertirATexto(NumAsi)
 		Mostrar "Buenos Aires - Salta"
 		Mostrar "Nombre y apellido : " bsasBarilo3[a,1]
 		Escribir "DNI:" bsasBarilo3[a,2]
 		Escribir "Telefono: +54" bsasBarilo3[a,3]
-		Mostrar "Equipaje en bodega: " bodega
+		Mostrar "Equipaje en bodega: " bsasBarilo3[a,4]
 		Escribir "Numero de pasajero frecuente: " bsasBarilo3[a,5]
 		Mostrar "Asiento :" NumAsi
 		Mostrar bsasbarilo3[a, 6]
@@ -466,6 +197,7 @@ Funcion vuelo2 <- bsasSalta2(bsasSalta Por Referencia, cantBS Por Referencia, b 
 	
 	Definir NumAsi Como Entero
 	NumAsi = 120 - cantBS
+	bsasSalta[b,6] = ConvertirATexto(NumAsi)
 	Mostrar "Buenos Aires - Salta"
 	Mostrar "Nombre y apellido : " bsasSalta[b,1]
 	Escribir "DNI:" bsasSalta[b,2]
@@ -498,6 +230,7 @@ Funcion vuelo2 <- bsasSalta2(bsasSalta Por Referencia, cantBS Por Referencia, b 
 	Mostrar precio//ingresar el precio
 	b = b + 1
 FinFuncion
+
 
 
 
@@ -539,9 +272,11 @@ Funcion vuelo3 <- RosBsA(rosBsas Por Referencia, cantRB Por Referencia, c Por Re
 	Mostrar b
 	
 	
+	
+	
 	Definir NumAsi Como Entero
 	NumAsi = 80 - cantRB
-	Mostrar "Buenos Aires - Salta"
+	rosBsas[c,6] = ConvertirATexto(NumAsi)
 	Mostrar "Nombre y apellido : " rosBsas[c,1]
 	Escribir "DNI:" rosBsas[c,2]
 	Escribir "Telefono: +54" rosBsas[c,3]
@@ -604,7 +339,7 @@ Funcion vuelo4 <- MardelMen(MdpMen Por Referencia, cantMM Por Referencia, d Por 
 		FinSi
 		Escribir "Ingrese su numero de pasajero frecuente: "
 		leer MdpMen[d,5]
-		
+
 		cantMM = cantMM - 1 // usamos este contador para saber cuantos lugares quedan disponibles.
 	SiNo
 		Mostrar "Disculpe, ya no se encuentran plazas disponibles para este vuelo."
@@ -613,7 +348,7 @@ Funcion vuelo4 <- MardelMen(MdpMen Por Referencia, cantMM Por Referencia, d Por 
 	
 	Definir NumAsi Como Entero
 	NumAsi = 80 - cantMM
-	Mostrar "Buenos Aires - Salta"
+	MdpMen[d,6] = ConvertirATexto(NumAsi)
 	Mostrar "Nombre y apellido : " MdpMen[d,1]
 	Escribir "DNI:" MdpMen[d,2]
 	Escribir "Telefono: +54" MdpMen[d,3]
@@ -638,15 +373,20 @@ Funcion vuelo4 <- MardelMen(MdpMen Por Referencia, cantMM Por Referencia, d Por 
 	FinSi
 	
 	Si NumAsi > 2 Entonces
-		precio = 125000
-		Si bodega Entonces
-			precio = precio * 1.05
-		FinSi
+			precio = 125000
+			Si bodega Entonces
+				precio = precio * 1.05
+			FinSi
 	FinSi
 	
 	Mostrar precio//ingresar el precio
 	d = d + 1
 FinFuncion
+
+
+
+
+
 
 Funcion qsya<- BuscarPasj(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
 	Definir Asiento Como Entero
@@ -704,9 +444,228 @@ Funcion qsya<- BuscarPasj(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
 	FinSegun
 FinFuncion
 
-Funcion listado <-vuelos()
 
+
+
+
+Funcion qsya<- BuscarPorNombre(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+	Definir BusNomb Como Caracter
+	SeleccionarVuelo
+	leer opc
+	Mostrar "Ingrese el nombre a averiguar" 
+	Leer BusNomb
+	Segun opc Hacer
+		1: Para a<-0 Hasta a Hacer
+				si BusNomb = bsasBarilo3[a,1]
+					Mostrar "Nombre y apellido: " bsasbarilo3[a, 1]
+					Mostrar "Nombre y apellido: " bsasbarilo3[a, 2]
+					Mostrar "Ruta: Buenos Aires - Bariloche"
+					encontrado = 1
+				FinSi
+			FinPara
+			si encontrado = 0 Entonces
+				Mostrar "Asiento no encontrado"
+			FinSi
+			
+		2: Para b<-0 Hasta b Hacer
+				si BusNomb = bsasSalta[b, 1]
+					Mostrar "Nombre y apellido: " bsasSalta[b, 1]
+					Mostrar "Nombre y apellido: " bsasSalta[b, 2]
+					Mostrar "Ruta: Buenos Aires - Bariloche"
+					encontrado = 1
+				FinSi
+			FinPara
+			si encontrado = 0 Entonces
+				Mostrar "Asiento no encontrado"
+			FinSi
+		3: Para c<-0 Hasta c Hacer
+				si BusNomb = rosBsas[c, 1]
+					Mostrar "Nombre y apellido: " rosBsas[c, 1]
+					Mostrar "Nombre y apellido: " rosBsas[c, 2]
+					Mostrar "Ruta: Buenos Aires - Bariloche"
+					encontrado = 1
+				FinSi
+			FinPara
+			si encontrado = 0 Entonces
+				Mostrar "Asiento no encontrado"
+			FinSi
+		4: Para d<-0 Hasta d Hacer
+				si BusNomb = MdpMen[d, 1]
+					Mostrar "Nombre y apellido: " MdpMen[d, 1]
+					Mostrar "Nombre y apellido: " MdpMen[d, 2]
+					Mostrar "Ruta: Buenos Aires - Bariloche"
+					encontrado = 1
+				FinSi
+			FinPara
+			si encontrado = 0 Entonces
+				Mostrar "Asiento no encontrado"
+			FinSi
+	FinSegun
+FinFuncion
 	
-	
-	
+Funcion OrdenDes <- OrdDes(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+	Definir aux Como Caracter
+	SeleccionarVuelo
+	leer opc
+	Segun opc Hacer
+		1:	para i<-0 hasta a Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta a Hacer //recorro las filas del array hasta la última
+					si bsasbarilo3[i,6]<bsasbarilo3[k,6] Entonces
+						aux <- bsasbarilo3[i,6] 
+						bsasbarilo3[i,6] <- bsasbarilo3[k,6]
+						bsasbarilo3[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta a Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar bsasbarilo3[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		2:
+			para i<-0 hasta b Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta b Hacer //recorro las filas del array hasta la última
+					si bsasSalta[i,6]<bsasSalta[k,6] Entonces
+						aux <- bsasSalta[i,6] 
+						bsasSalta[i,6] <- bsasSalta[k,6]
+						bsasSalta[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta b Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar bsasSalta[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		3:
+			para i<-0 hasta c Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta c Hacer //recorro las filas del array hasta la última
+					si rosBsas[i,6]<rosBsas[k,6] Entonces
+						aux <- rosBsas[i,6] 
+						rosBsas[i,6] <- rosBsas[k,6]
+						rosBsas[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta c Hacer
+						Mostrar ""
+						Para k<-0 Hasta 6 Hacer
+							Escribir Sin Saltar rosBsas[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		4:
+			para i<-0 hasta d Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta d Hacer //recorro las filas del array hasta la última
+					si MdpMen[i,6]<MdpMen[k,6] Entonces
+						aux <- MdpMen[i,6] 
+						MdpMen[i,6] <- MdpMen[k,6]
+						MdpMen[k,6] <- aux
+					FinSi
+					Para i<-1 Hasta c Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar MdpMen[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+	FinSegun
+FinFuncion
+
+Funcion OrdenAsc <- OrdAsc(a,b,c,d, MdpMen, bsasbarilo3, bsasSalta, rosBsas)
+	Definir aux Como Caracter
+	SeleccionarVuelo
+	leer opc
+	Segun opc Hacer
+		1:	para i<-0 hasta a Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta a Hacer //recorro las filas del array hasta la última
+					si bsasbarilo3[i,6]>bsasbarilo3[k,6] Entonces
+						aux <- bsasbarilo3[i,6] 
+						bsasbarilo3[i,6] <- bsasbarilo3[k,6]
+						bsasbarilo3[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta a Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar bsasbarilo3[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		2:
+			para i<-0 hasta b Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta b Hacer //recorro las filas del array hasta la última
+					si bsasSalta[i,6]>bsasSalta[k,6] Entonces
+						aux <- bsasSalta[i,6] 
+						bsasSalta[i,6] <- bsasSalta[k,6]
+						bsasSalta[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta b Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar bsasSalta[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		3:
+			para i<-0 hasta c Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta c Hacer //recorro las filas del array hasta la última
+					si rosBsas[i,6]>rosBsas[k,6] Entonces
+						aux <- rosBsas[i,6] 
+						rosBsas[i,6] <- rosBsas[k,6]
+						rosBsas[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta c Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar rosBsas[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+		4:
+			para i<-0 hasta d Hacer //recorro las filas del array hasta la penultima
+				para k<-i hasta d Hacer //recorro las filas del array hasta la última
+					si MdpMen[i,6]>MdpMen[k,6] Entonces
+						aux <- MdpMen[i,6] 
+						MdpMen[i,6] <- MdpMen[k,6]
+						MdpMen[k,6] <- aux
+					FinSi
+					Para i<-0 Hasta c Hacer
+						Mostrar ""
+						Para k<-1 Hasta 6 Hacer
+							Escribir Sin Saltar MdpMen[i,k]
+							Escribir Sin Saltar " "
+						FinPara
+						
+					FinPara
+					Mostrar ""
+				FinPara
+			FinPara
+	FinSegun
+
 FinFuncion
